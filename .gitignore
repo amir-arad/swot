@@ -7,3 +7,5 @@ node_modules/
 *.sublime-workspace
 /client/styles/*.css
 *.bak
+
+.idea
