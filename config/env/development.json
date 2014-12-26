@@ -7,6 +7,7 @@
         "nano" : "nano@science.gov"
     },
     "messages" : {
-        "badLogin" : "Invalid personal code"
+        "badLogin" : "Invalid personal code",
+        "badQuizId" : "Failed to identify subject"
     }
 }

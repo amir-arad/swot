@@ -5,7 +5,7 @@ nav#nav.navbar.navbar-inverse(role="navigation")
             span.icon-bar
             span.icon-bar
             span.icon-bar
-        a.navbar-brand(href="/") swot
+        //a.navbar-brand(href="/") swot
 
     .nav.navbar-text.nav-center
         h2#title= title
@@ -13,7 +13,7 @@ nav#nav.navbar.navbar-inverse(role="navigation")
     #navbar-collapse-1.collapse.navbar-collapse
         ul.nav.navbar-nav
             if email
-                li: a(href="/quizzes") My Quizzes
+                li: a(href="/research") New Research
         ul.nav.navbar-nav.navbar-right
             if email
                 li.dropdown
@@ -22,5 +22,5 @@ nav#nav.navbar.navbar-inverse(role="navigation")
                     ul.dropdown-menu
                         li: a(href="/logout") Log out
             else
-                li: a(href="/login") Login
-                li: a(href="/register") Register
+                //li: a(href="/login") Login
+                //li: a(href="/register") Register

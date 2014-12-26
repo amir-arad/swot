@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    form.form-signin(action="/research", method="post", role="form")
+        h2.form-signin-heading= title
+        if (message != '')
+            div.alert.alert-danger
+                p !{message}
+        input.form-control(type="password", name="id", placeholder="Subject barcode", required="required")
+        button.btn.btn-lg.btn-primary.btn-block(type="submit") Begin Research

@@ -16,9 +16,9 @@ var authentication = require('./lib/middleware/authentication');
 var restrict = require('./lib/middleware/restrict');
 
 // Routing includes
-var register = require('./routes/register');
 var login = require('./routes/login');
 var quiz = require('./routes/quiz');
+var research = require('./routes/research');
 
 // Authentication
 passport.use(new LocalStrategy({ usernameField: 'email' }, authentication.authenticate));
@@ -53,7 +53,7 @@ app.use(require('less-middleware')({ src: path.join(__dirname, 'client') }));
 app.use(express.static(path.join(__dirname, 'client')));
 app.use(user);
 app.use(restrict({
-    allowedRoutes: ['/', '/login', '/register'],
+    allowedRoutes: ['/', '/login'],
     redirectTo: '/login'
 }));
 app.use(app.router);
@@ -69,21 +69,21 @@ if ('development' == app.get('env')) {
 
 // Home
 app.get('/', function(req, res) {
-    if (req.isAuthenticated()) { res.redirect('/quizzes'); }
+    if (req.isAuthenticated()) { res.redirect('/research'); }
     else { res.redirect('/login'); }
 });
 
-// Registration/Login
-app.get('/register', register.form);
-app.post('/register', register.submit);
+// Login
 app.get('/login', login.form);
-app.post('/login', passport.authenticate('local', { successRedirect: '/quizzes',
+app.post('/login', passport.authenticate('local', { successRedirect: '/research',
                                                     failureRedirect: '/login',
                                                     failureFlash: true }));
 app.get('/logout', login.logout);
 
 // Quizzes
 app.get('/quizzes', quiz.quizzes);
+app.get('/research', research.subject);
+app.post('/research', research.choose);
 app.get('/create', quiz.createForm);
 app.post('/create', quiz.create);
 app.get('/edit/:id', quiz.edit);

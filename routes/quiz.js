@@ -11,6 +11,7 @@ var Topic = require('../lib/quiz').Topic;
 var Question = require('../lib/question').Question;
 var FillInQuestion = require('../lib/questions/fillIn').FillInQuestion;
 var MultipleChoiceQuestion = require('../lib/questions/multipleChoice').MultipleChoiceQuestion;
+var config = require('../config/config');
 
 var ObjectId = mongoose.Types.ObjectId;
 
@@ -102,7 +103,7 @@ exports.quizzes = function (req, res) {
 exports.quiz = function (req, res) {
     Quiz.findOne({ _id: req.params.id }, function (err, quiz) {
         if (err) {
-            req.flash('error', 'Failed to load quiz.');
+            req.flash('error', config.messages.badQuizId);
             res.redirect('back');
             return;
         }
