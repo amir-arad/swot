@@ -12,6 +12,7 @@ var less = require('less-middleware');
 // Project libraries/middleware
 var config = require('./config/config');
 var user = require('./lib/middleware/user');
+var admin = require('./lib/middleware/admin');
 var authentication = require('./lib/middleware/authentication');
 var restrict = require('./lib/middleware/restrict');
 
@@ -52,6 +53,7 @@ app.use(passport.session());
 app.use(require('less-middleware')({ src: path.join(__dirname, 'client') }));
 app.use(express.static(path.join(__dirname, 'client')));
 app.use(user);
+app.use(admin);
 app.use(restrict({
     allowedRoutes: ['/', '/login'],
     redirectTo: '/login'

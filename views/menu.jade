@@ -13,6 +13,8 @@ nav#nav.navbar.navbar-inverse(role="navigation")
     #navbar-collapse-1.collapse.navbar-collapse
         ul.nav.navbar-nav
             if email
+                if admin
+                    li: a(href="/quizzes") Manage Quizzes
                 li: a(href="/research") New Research
         ul.nav.navbar-nav.navbar-right
             if email
