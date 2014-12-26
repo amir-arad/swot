@@ -10,6 +10,7 @@ var MongoStore = require('connect-mongo')(express);
 var less = require('less-middleware');
 
 // Project libraries/middleware
+var config = require('./config/config');
 var user = require('./lib/middleware/user');
 var authentication = require('./lib/middleware/authentication');
 var restrict = require('./lib/middleware/restrict');
@@ -26,14 +27,10 @@ passport.deserializeUser(authentication.deserializeUser);
 
 // Initialize the app and db
 var app = express();
-var MONGODB_URL = process.env.MONGODB_URL || 'localhost:27017/swot';
-mongoose.connect(MONGODB_URL);
-
-// Secrets
-var secret = process.env.SECRET || 'TFVtSsdIekQ7VwjCzgng';
+mongoose.connect(config.mongodbUrl);
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', config.port);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(express.favicon());
@@ -42,9 +39,9 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(express.bodyParser());
-app.use(express.cookieParser(secret));
+app.use(express.cookieParser(config.secret));
 app.use(express.session({
-    secret: secret,
+    secret: config.secret,
     store: new MongoStore({
         db: mongoose.connection.db
     })

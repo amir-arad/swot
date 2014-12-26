@@ -1,0 +1,12 @@
+{
+    "port": 80,
+    "mongodbUrl" : "localhost:27017/swot",
+    "editEnabled" : false,
+    "usersPasswords" : {
+        "f7044b079df0833761862113" : "bio@science.gov",
+        "63e843a2b6a60744ee1f04a3" : "nano@science.gov"
+    },
+    "messages" : {
+        "badLogin" : "Invalid personal code"
+    }
+}
