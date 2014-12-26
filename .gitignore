@@ -12,3 +12,4 @@ node_modules/
 bin
 node_modules
 *.iml
+npm-debug.log
