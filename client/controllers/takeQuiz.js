@@ -56,7 +56,7 @@ angular.module('swot').controller('ViewQuizCtrl', [ '$scope', 'quiz', 'focus', f
     };
 
     $scope.exit = function () {
-        window.location.href = "/quizzes";
+        window.location.href = "/";
     };
 
     $scope.restart = function () {

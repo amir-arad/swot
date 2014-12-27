@@ -26,15 +26,17 @@
                 <button type="button" ng-repeat="(i, choice) in question.choices track by $index"
                     ng-model="question.submission" btn-radio="i" class="choice btn btn-default form-control"
                     ng-disabled="question.submitted"
-                    ng-class="{selected: (question.submitted && (question.submission === i)),
-                               correct: (question.submitted && (question.submission === i && question.result.isCorrect) || (question.result.correctAnswerIndex === i)),
-                               incorrect: (question.submitted && (question.submission === i ? !question.result.isCorrect : (question.result.correctAnswerIndex !== i)))}">
-
+                    ng-class="{selected: (question.submitted && (question.submission === i))">
+                    <!--,
+correct: (question.submitted && (question.submission === i && question.result.isCorrect) || (question.result.correctAnswerIndex === i)),
+incorrect: (question.submitted && (question.submission === i ? !question.result.isCorrect : (question.result.correctAnswerIndex !== i)))}-->
+<!--
                     <span ng-show="question.submitted" class="result-icon">
                         <span ng-show="(question.submission === i) && !question.result.isCorrect" class="glyphicon incorrect glyphicon-remove-sign"></span>
                         <span ng-show="(question.submission === i) && question.result.isCorrect" class="glyphicon correct glyphicon-ok"></span>
                         <span ng-show="(question.submission !== i) && question.result.correctAnswerIndex === i" class="glyphicon correct glyphicon-circle-arrow-right"></span>
                     </span>
+-->
 
                     {{choice}}
                 </button>
@@ -49,26 +51,27 @@
 
     <!-- Submission Result -->
     <div class="result-container ng-cloak" ng-show="question.submitted">
-        <div ng-show="question.result" class="result alert"
-             ng-class="{ 'correct': question.result.isCorrect,
-                         'alert-success': question.result.isCorrect,
-                         'incorrect': !question.result.isCorrect,
-                         'alert-danger': !question.result.isCorrect,
-                         'has-detail': (!question.result.isCorrect || question.result.supplementalInfoHtml),
-                         'has-supplemental-info': question.result.supplementalInfoHtml }">
+        <div ng-show="question.result" class="result alert">
+             <!--ng-class="{ 'correct': question.result.isCorrect,-->
+                         <!--'alert-success': question.result.isCorrect,-->
+                         <!--'incorrect': !question.result.isCorrect,-->
+                         <!--'alert-danger': !question.result.isCorrect,-->
+                         <!--'has-detail': (!question.result.isCorrect || question.result.supplementalInfoHtml),-->
+                         <!--'has-supplemental-info': question.result.supplementalInfoHtml }">-->
+<!--
 
-            <!-- Result header -->
+            &lt;!&ndash; Result header &ndash;&gt;
             <div class="result-header"
                  ng-class="{ 'correct': question.result.isCorrect,
                              'incorrect': !question.result.isCorrect }">
 
-                <!-- Correct header -->
+                &lt;!&ndash; Correct header &ndash;&gt;
                 <span ng-show="question.result.isCorrect">
                     <span class="glyphicon glyphicon-ok-sign"></span>
                     <strong>Correct!</strong>
                 </span>
 
-                <!-- Incorrect header -->
+                &lt;!&ndash; Incorrect header &ndash;&gt;
                 <span ng-show="!question.result.isCorrect">
                     <strong class="result-header">
                         <span class="glyphicon glyphicon-remove-sign"></span>
@@ -77,10 +80,10 @@
                 </span>
             </div>
 
-            <!-- Detail container (correct answer, supplemental info, etc.) -->
+            &lt;!&ndash; Detail container (correct answer, supplemental info, etc.) &ndash;&gt;
             <div class="detail-container">
 
-                <!-- Correct answer (shown when submission is not correct) -->
+                &lt;!&ndash; Correct answer (shown when submission is not correct) &ndash;&gt;
                 <div class="correct-answer-container" ng-show="!question.result.isCorrect">
                     <span ng-show="question.type === 'FillInQuestion'">
                         The correct answer is:&nbsp;<strong class="correct-answer fill-in">{{question.result.correctAnswer}}</strong>
@@ -94,12 +97,13 @@
                     </span>
                 </div>
 
-                <!-- Supplemental Information -->
+                &lt;!&ndash; Supplemental Information &ndash;&gt;
                 <div class="supplemental-info" ng-show="question.result.supplementalInfoHtml"
                      ng-bind-html="trusted(question.result.supplementalInfoHtml)">
                 </div>
 
             </div>
+-->
 
             <!-- Next button -->
             <div class="next-button-container">
