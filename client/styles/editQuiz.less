@@ -8,7 +8,7 @@
 
 .sortable-list-placeholder {
     width: 100%;
-    margin: 8px 0;    
+    margin: 8px 0;
     border: 1px dashed #ccc;
     border-radius: 5px;
     font-size: 1.1em;
@@ -92,10 +92,24 @@
         background-color: hsl(230, 32%, 97%);
     }
 
+    .quiz-info-container {
+      .make-xs-column(6);
+      width: 100%;
+      margin: 8px 0;
+      padding: 1em 2em;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: hsl(230, 32%, 97%);
+
+      @media(max-width:@header-breakpoint) {
+        float: none;
+        width: 100%;
+      }
+    }
     .no-questions {
         margin: 1em auto;
         text-align: center;
     }
-    
+
     .alerts { margin: 1em 0; }
 }

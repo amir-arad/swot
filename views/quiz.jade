@@ -56,19 +56,24 @@ block content
                             show-next="!(isLastQuestion() && !isFinished())", next="next()"
                             next-button-text="isLastQuestion() ? 'Finish' : 'Next'")
 
+
                     .summary-container.ng-cloak(ng-show="showingSummary")
-                        .header
-                            h3 Summary
-                        span Your Score:&nbsp;
-                        span.score {{numCorrect()}} / {{questions.length}}
-                        span.score-percent ({{score()}}%)
-                        .summary-actions
-                            button.back-to-quizzes.btn.btn-success(type="button", ng-click="exit()")
-                                span.glyphicon.glyphicon-circle-arrow-left
-                                | Back to Quizzes
-                            button.retake.btn.btn-primary(type="button", ng-click="restart()")
-                                span.glyphicon.glyphicon-refresh
-                                | Retake
+                        .div(ng-show="success")
+                            .header
+                                h3 Success
+                            // TODO add info
+                            .summary-actions
+                                button.back-to-quizzes.btn.btn-success(type="button", ng-click="exit()")
+                                    span.glyphicon.glyphicon-circle-arrow-left
+                                    | Done
+                        .div(ng-hide="success")
+                            .header
+                                h3 Failure concluding result. Re-check specimen.
+                            .summary-actions
+                                button.back-to-quizzes.btn.btn-success(type="button", ng-click="exit()")
+                                    span.glyphicon.glyphicon-circle-arrow-left
+                                    | Done
+
 
 block scripts
     script.

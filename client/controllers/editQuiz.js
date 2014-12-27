@@ -357,7 +357,7 @@ angular.module('swot').controller('EditQuizCtrl', function (quiz, $scope, $timeo
                     '-',
                     'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock',
                     '-',
-                    'Link', 'Unlink', '-' ] },
+                    'BidiLtr','BidiRtl', '-' ] },
 
         { name:  'tables_and_images',
           items: [  'Image', 'Table', 'HorizontalRule', 'SpecialChar' ] },

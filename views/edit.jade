@@ -7,7 +7,7 @@ block content
 
             .header-container.form-group
                 .row
-                    label.control-label.col-xs-12(for="quiz-name") Quiz Name:
+                    label.control-label.col-xs-12(for="quiz-name") Research Name:
                 .row
                     .quiz-name-container
                         input#quiz-name.form-control(type="text", name="name", ng-model="quiz.name", placeholder="Name", autofocus)
@@ -37,7 +37,11 @@ block content
                             div.alert.alert-danger
                                 p !{message}
                         alert.ng-cloak(ng-repeat="alert in alerts", type="alert.type", close="closeAlert($index)") {{alert.msg}}
+                .row
+                    label.control-label.col-xs-12 Success Information:
+                .rich-editor(ckedit="{{ckEditorConfig}}", ng-model="quiz.info")
 
+            .row
             label.control-label Questions:
             .question-list-container
                 ul.sortable-list-container(ui-sortable="sortableOptions", ng-model="quiz.questions", ng-show="quiz.questions.length > 0")

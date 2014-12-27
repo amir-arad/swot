@@ -4,6 +4,7 @@ angular.module('swot').controller('ViewQuizCtrl', [ '$scope', 'quiz', 'focus', f
     $scope.alerts = [];
     $scope.currentQuestionIndex = 0;
     $scope.showingSummary = false;
+    $scope.success = false;
 
     $scope.load = function () {
         $scope.closeAllAlerts();
@@ -30,6 +31,7 @@ angular.module('swot').controller('ViewQuizCtrl', [ '$scope', 'quiz', 'focus', f
             currentQuestion.submitted = true;
             currentQuestion.result = result;
             currentQuestion.submission = submission;    // Restore in case it was edited while waiting for the response.
+            $scope.next();
         }, function (error) {
             $scope.showError('An error occurred while submitting the question: ' + error);
         });
@@ -52,6 +54,7 @@ angular.module('swot').controller('ViewQuizCtrl', [ '$scope', 'quiz', 'focus', f
     };
 
     $scope.finish = function () {
+        $scope.success = $scope.numCorrect() == $scope.questions.length;
         $scope.showingSummary = true;
     };
 
