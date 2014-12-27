@@ -1,6 +1,7 @@
 angular.module('swot').controller('ViewQuizCtrl', [ '$scope', 'quiz', 'focus', function ($scope, quiz, focus) {
     $scope._id = _quizId || null;
     $scope.questions = [{}];
+    $scope.info = '';
     $scope.alerts = [];
     $scope.currentQuestionIndex = 0;
     $scope.showingSummary = false;
@@ -9,8 +10,9 @@ angular.module('swot').controller('ViewQuizCtrl', [ '$scope', 'quiz', 'focus', f
     $scope.load = function () {
         $scope.closeAllAlerts();
 
-        quiz.questions($scope._id, function (questions) {
+        quiz.questions($scope._id, function (questions, info) {
             $scope.questions = questions;
+            $scope.info = info;
 
             _.each($scope.questions, function (question) {
                 question.submission = null;

@@ -33,10 +33,10 @@ block content
                 alert.ng-cloak(ng-repeat="alert in alerts", type="alert.type", close="closeAlert($index)") {{alert.msg}}
 
                 .quiz-body
-
-                    button#toggle-sidebar.btn.visible-xs.visible-sm(data-toggle="offcanvas")
-                        span.sr-only Toggle Quiz Sidebar
-                        span.glyphicon.correct.glyphicon-th-list
+                    //
+                    //button#toggle-sidebar.btn.visible-xs.visible-sm(data-toggle="offcanvas")
+                    //    span.sr-only Toggle Quiz Sidebar
+                    //    span.glyphicon.correct.glyphicon-th-list
 
                     //.header.ng-cloak(ng-hide="showingSummary")
                     //    .header-row
@@ -60,15 +60,16 @@ block content
                     .summary-container.ng-cloak(ng-show="showingSummary")
                         .div(ng-show="success")
                             .header
-                                h3 Success
-                            // TODO add info
+                                h3 Research result concluded
+                                viewinfo(info="info")
                             .summary-actions
                                 button.back-to-quizzes.btn.btn-success(type="button", ng-click="exit()")
                                     span.glyphicon.glyphicon-circle-arrow-left
                                     | Done
                         .div(ng-hide="success")
                             .header
-                                h3 Failure concluding result. Re-check specimen.
+                                h3 Failure concluding result.
+                                h3 Re-check specimen.
                             .summary-actions
                                 button.back-to-quizzes.btn.btn-success(type="button", ng-click="exit()")
                                     span.glyphicon.glyphicon-circle-arrow-left
@@ -83,3 +84,4 @@ block scripts
     script(src="/services/quiz.js")
     script(src="/controllers/takeQuiz.js")
     script(src="/directives/viewQuestion.js")
+    script(src="/directives/viewInfo.js")

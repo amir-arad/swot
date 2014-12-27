@@ -156,7 +156,7 @@ exports.questions = function(req, res, next) {
             }
         });
 
-        res.json({ success: true, questions: questions });
+        res.json({ success: true, questions: questions, info: quiz.info });
     });
 };
 
@@ -285,7 +285,9 @@ exports.save = function (req, res, next) {
 
 function updateQuiz(quiz, req, res, includeId) {
     // Update quiz properties
-    quiz.name = req.body.name || "New Quiz";
+    quiz.name = req.body.name;
+    quiz.barcode = req.body.barcode;
+    quiz.info = req.body.info;
 
     // Empty out the question list - embedded document arrays need to be saved using push()
     quiz.questions = [];

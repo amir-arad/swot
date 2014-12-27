@@ -7,7 +7,7 @@ block content
 
             .header-container.form-group
                 .row
-                    label.control-label.col-xs-12(for="quiz-name") Research Name:
+                    label.control-label.col-xs-12(for="quiz-name") Research Name (displayed to player):
                 .row
                     .quiz-name-container
                         input#quiz-name.form-control(type="text", name="name", ng-model="quiz.name", placeholder="Name", autofocus)
@@ -30,6 +30,11 @@ block content
                                 li: a#delete-quiz(data-toggle="modal", href="#deleteDialog", ng-hide="isNew()")
                                     i.glyphicon.glyphicon-menu.glyphicon-remove
                                     | Delete
+                .row
+                    label.control-label.col-xs-12(for="quiz-name") Research Barcode:
+                .row
+                    .quiz-name-container
+                        input#quiz-barcode.form-control(type="text", name="barcode", ng-model="quiz.barcode", placeholder="barcode", autofocus)
                 // Alerts
                 .row
                     .alerts.col-xs-12

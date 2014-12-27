@@ -26,7 +26,7 @@
                 <button type="button" ng-repeat="(i, choice) in question.choices track by $index"
                     ng-model="question.submission" btn-radio="i" class="choice btn btn-default form-control"
                     ng-disabled="question.submitted"
-                    ng-class="{selected: (question.submitted && (question.submission === i))">
+                    ng-class="{selected: (question.submitted && (question.submission === i))}">
                     <!--,
 correct: (question.submitted && (question.submission === i && question.result.isCorrect) || (question.result.correctAnswerIndex === i)),
 incorrect: (question.submitted && (question.submission === i ? !question.result.isCorrect : (question.result.correctAnswerIndex !== i)))}-->

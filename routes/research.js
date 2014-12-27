@@ -6,13 +6,13 @@ exports.subject = function (req, res) {
 };
 
 exports.choose =  function (req, res) {
-    var quizId = req.body.id;      // params or   query?
-    Quiz.findOne({ _id: quizId }, function (err, quiz) {
+    var barcode = req.body.id;
+    Quiz.findOne({ barcode: barcode, createdBy: req.user._id }, function (err, quiz) {
         if (err || !quiz || !req.user.ownsQuiz(quiz)) {
             req.flash('error', config.messages.badQuizId);
             res.redirect('back');
         } else {
-            res.redirect('/quiz/'+ quizId);
+            res.redirect('/quiz/'+ quiz._id);
         }
     });
 };

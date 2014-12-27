@@ -92,7 +92,7 @@ angular.module('swot').service('quiz', ['$http', function ($http) {
         $http.get('/questions', {
             params: { id: id }
         }).success(function (response) {
-            if (response.success) { success(response.questions); }
+            if (response.success) { success(response.questions, response.info); }
             else { error(response.message); }
         }).error(function (data) {
             error(self.getError(data));
