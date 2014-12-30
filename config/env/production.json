@@ -9,5 +9,8 @@
     "messages" : {
         "badLogin" : "Invalid personal code",
         "badQuizId" : "Failed to identify subject"
+    },
+    "media" : {
+        "code" : "file.txt"
     }
 }

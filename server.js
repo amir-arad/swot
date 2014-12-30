@@ -34,6 +34,15 @@ mongoose.connect(config.mongodbUrl);
 app.set('port', config.port);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+
+//Should be placed before express.static
+app.use(express.compress({
+    filter: function(req, res) {
+        return (/json|text|javascript|css/).test(res.getHeader('Content-Type'));
+    },
+    level: 5
+}));
+//Setting the fav icon and static folder
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.json());
@@ -52,6 +61,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(require('less-middleware')({ src: path.join(__dirname, 'client') }));
 app.use(express.static(path.join(__dirname, 'client')));
+app.use('/media_files', express.static(path.join(__dirname, 'media_files')));
 app.use(user);
 app.use(admin);
 app.use(restrict({

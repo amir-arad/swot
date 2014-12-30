@@ -1,6 +1,9 @@
 extends layout
 
 block content
+    if (media)
+        script.
+            window.open('!{media}', '_blank').focus();
     form.form-signin(action="/research", method="post", role="form")
         h2.form-signin-heading= title
         if (message != '')
