@@ -1,45 +1,47 @@
 {
-  "name": "swot",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "start": "node server.js",
-    "test": "mocha --recursive test/unit"
-  },
-  "dependencies": {
-    "express": "3.4.5",
-    "jade": "*",
-    "mongoose": "~3.8.3",
-    "bcrypt-nodejs": "0.0.3",
-    "passport": "~0.1.17",
-    "passport-local": "~0.1.6",
-    "connect-flash": "~0.1.1",
-    "underscore": "~1.5.2",
-    "async": "~0.2.9",
-    "moment": "~2.5.0",
-    "connect-mongo": "~0.4.0",
-    "fs-extra": "~0.8.1",
-    "execSync": "~1.0.1-pre",
-    "q": "~1.0.0",
-    "less-middleware": "~0.1.15",
-    "mongoose-q": "0.0.9",
-    "json-patch": "~0.4.3"
-  },
-  "devDependencies": {
-    "chai": "~1.8.1",
-    "mocha": "~1.20.1",
-    "sinon": "~1.7.3",
-    "sinon-chai": "~2.4.0",
-    "protractor": "~0.18.1",
-    "grunt": "~0.4.2",
-    "grunt-shell-spawn": "git://github.com/sergkr/grunt-shell-spawn#master",
-    "grunt-env": "~0.4.1",
-    "grunt-nodemon": "~0.2.1",
-    "chai-as-promised": "~4.1.1",
-    "grunt-mocha-test": "~0.11.0",
-    "chai-things": "~0.2.0"
-  },
-  "engines": {
-    "node": "0.10.x"
-  }
+    "name": "swot",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "start": "node server.js",
+        "test": "mocha --recursive test/unit"
+    },
+    "dependencies": {
+        "express": "3.4.5",
+        "jade": "*",
+        "mongoose": "~3.8.3",
+        "bcrypt-nodejs": "0.0.3",
+        "passport": "~0.1.17",
+        "passport-local": "~0.1.6",
+        "connect-flash": "~0.1.1",
+        "underscore": "~1.5.2",
+        "async": "~0.2.9",
+        "moment": "~2.5.0",
+        "connect-mongo": "~0.4.0",
+        "fs-extra": "~0.8.1",
+        "execSync": "~1.0.1-pre",
+        "q": "~1.0.0",
+        "less-middleware": "~0.1.15",
+        "mongoose-q": "0.0.9",
+        "json-patch": "~0.4.3",
+        "winston": "0.6.x",
+        "express-winston": "0.2.x"
+    },
+    "devDependencies": {
+        "chai": "~1.8.1",
+        "mocha": "~1.20.1",
+        "sinon": "~1.7.3",
+        "sinon-chai": "~2.4.0",
+        "protractor": "~0.18.1",
+        "grunt": "~0.4.2",
+        "grunt-shell-spawn": "git://github.com/sergkr/grunt-shell-spawn#master",
+        "grunt-env": "~0.4.1",
+        "grunt-nodemon": "~0.2.1",
+        "chai-as-promised": "~4.1.1",
+        "grunt-mocha-test": "~0.11.0",
+        "chai-things": "~0.2.0"
+    },
+    "engines": {
+        "node": "0.10.x"
+    }
 }

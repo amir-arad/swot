@@ -8,6 +8,8 @@ var LocalStrategy = require('passport-local').Strategy;
 var flash = require('connect-flash');
 var MongoStore = require('connect-mongo')(express);
 var less = require('less-middleware');
+var logger = require('./config/logger');
+var expressWinston = require('express-winston');
 
 // Project libraries/middleware
 var config = require('./config/config');
@@ -44,7 +46,7 @@ app.use(express.compress({
 }));
 //Setting the fav icon and static folder
 app.use(express.favicon());
-app.use(express.logger('dev'));
+// app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
@@ -69,6 +71,7 @@ app.use(restrict({
     redirectTo: '/login'
 }));
 app.use(app.router);
+app.use(expressWinston.errorLogger({winstonInstance: logger }));
 
 // development only
 if ('development' == app.get('env')) {
@@ -118,8 +121,15 @@ app.delete('/topics/:id', quiz.deleteTopic);
 
 // ----------------------------------------------------------------------------
 
+// testing all log levels
+logger.log('silly', "starting up");
+logger.log('debug', "starting up");
+logger.log('verbose', "starting up");
+logger.log('info', "starting up");
+logger.log('warn', "starting up");
+logger.log('error', "starting up");
 
 // Start the server
 http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+    logger.info("Express server listening on port", app.get('port'));
 });

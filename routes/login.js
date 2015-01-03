@@ -7,6 +7,7 @@ exports.form = function (req, res) {
 exports.logout = function (req, res) {
     req.session.destroy(function (err) {
         if (err) throw err;
+        logger.info("user logout success", req.user);
         res.redirect('/');
     });
 };

@@ -1,0 +1,16 @@
+var winston = require('winston');
+var config = require('./config')
+
+var logger = new winston.Logger({
+    transports: [
+        new winston.transports.Console({ level: 'info', json: false, timestamp: true }),
+        new winston.transports.File({ level: 'info', filename: config.root + '/logs/debug.log', json: false })
+    ],
+    exceptionHandlers: [
+        new winston.transports.Console({ json: true, timestamp: true }),
+        new winston.transports.File({ filename: config.root + '/logs/exceptions.log', json: true })
+    ],
+    exitOnError: false
+});
+
+module.exports = logger;

@@ -13,6 +13,8 @@ var FillInQuestion = require('../lib/questions/fillIn').FillInQuestion;
 var MultipleChoiceQuestion = require('../lib/questions/multipleChoice').MultipleChoiceQuestion;
 var config = require('../config/config');
 
+var logger = require('../config/logger');
+
 var ObjectId = mongoose.Types.ObjectId;
 
 exports.quizzes = function (req, res) {
@@ -45,61 +47,6 @@ exports.quizzes = function (req, res) {
         .done();
 };
 
-/*
-exports.quizzes = function (req, res) {
-    // Fetch user's quizzes and topics
-    var quizzes = [];
-    var topics = [];
-    User.findOne({ _id: req.user._id }).lean().populate('quizzes topics').execQ()
-        .then(function (user) {
-
-            quizzes = _.map(user.quizzes, function (quiz) {
-                quiz.numQuestions = quiz.questions.length;
-
-                // Convert dates to readable form
-                quiz.dateCreated = moment(quiz.dateCreated).format('MMMM YYYY');
-
-                // Keep only the properties we care about to lessen the amount of data to transmit.
-                return _.pick(quiz, '_id', 'name', 'dateCreated', 'numQuestions', 'topic');
-            });
-
-            // Convert flat list of topics into a nested structure
-            topics = User.getTopicsHierarchy();
-
-            // Get the topics for each subject
-            return Q.all(_.map(user.subjects, function (subject) {
-                return Topic.findQ({ subject: subject }).then(function (topics) {
-                    subject.topics = _.map(topics, function (topic) {
-                        return _.pick(topic, '_id', 'name');
-                    });
-                    return subject;
-                });
-            }))
-            .then(function (results) {
-                subjects = _.map(results, function (subject) {
-                    return _.pick(subject, '_id', 'name', 'topics');
-                })
-            });
-        })
-        .catch(function (err) {
-            console.error(err.stack || err);
-            quizzes = [];
-            subjects = [];
-            res.locals.message = {
-                type: 'error',
-                message: 'An error occurred loading the quizzes.'
-            };
-        })
-        .fin(function () {
-            res.render('quizzes', {
-                title: 'My Quizzes',
-                quizzes: quizzes,
-                subjects: subjects
-            });
-        });
-};
-*/
-
 exports.quiz = function (req, res) {
     Quiz.findOne({ _id: req.params.id }, function (err, quiz) {
         if (err) {
@@ -108,6 +55,7 @@ exports.quiz = function (req, res) {
             return;
         }
 
+        logger.info("research", quiz.name, "loaded by", req.user.email);
         res.render('quiz', {
             title: quiz.name,
             quizId: req.params.id,
