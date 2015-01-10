@@ -55,7 +55,7 @@ exports.quiz = function (req, res) {
             return;
         }
 
-        logger.info("research", quiz.name, "loaded by", req.user.email);
+        logger.info("research '" + quiz.name + "' loaded by " + req.user.email);
         res.render('quiz', {
             title: quiz.name,
             quizId: req.params.id,
@@ -132,7 +132,17 @@ exports.submitQuestion = function(req, res, next) {
         if (err) { return error(err.toString()); }
         if (!quiz) { return error('Failed to load quiz'); }
 
-        return res.json(quiz.submitQuestion(questionIndex, submission));
+        var resBody = quiz.submitQuestion(questionIndex, submission);
+        if (resBody.success){
+            if(resBody.isCorrect){
+                logger.info("question "+ (questionIndex+1) +" from research '" + quiz.name + "' answered correctly by " + req.user.email);
+            } else {
+                logger.info("question "+ (questionIndex+1) +" from research '" + quiz.name + "' failed by " + req.user.email);
+            }
+        } else {
+
+        }
+        return res.json(resBody);
     });
 };
 

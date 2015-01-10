@@ -11,7 +11,7 @@ exports.choose =  function (req, res) {
     var barcode = req.body.id;
     var media = config.media[barcode];
     if (media){
-        logger.info("file", media, "viewed by", req.user.email);
+        logger.info("file '" + media + "' viewed by " + req.user.email);
         res.render('research', { title: 'New Research', media : '/media_files/'+ media, message: req.flash('error')});
     } else {
         Quiz.findOne({ barcode: barcode, createdBy: req.user._id }, function (err, quiz) {
